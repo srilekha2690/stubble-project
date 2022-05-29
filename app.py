@@ -1,12 +1,16 @@
 from asyncio.windows_events import NULL
+from email import message
+from email.mime import application
+from urllib import response
 from pyparsing import null_debug_action
 import pyrebase
 from firebase import firebase
 from flask import Flask, render_template, request, redirect, url_for, session
+import requests
 import numpy as np
 import pandas as pd
+# from sklearn.ensemble._forest import *
 from joblib import load
-import razorpay 
 
 firebaseConfig = {
   "apiKey": "AIzaSyAFsp5wFnuF0R_URada7GTaWflHKO9VuU8",
@@ -236,8 +240,46 @@ def freg():
 #### farmer dashboard ####
 @app.route('/ffeed',methods=['GET', 'POST'])
 def ffeed():
-	return render_template('farmer-dashboard.html')
+	
+	user_data = FBConn.get('/user_data/',None)
+	ph=""
+	name=""
 
+	if "user" in session:
+		ph = session["user"]
+
+	for i in user_data:
+		if ph == user_data[i]['Phone Number']:	
+			name = user_data[i]['Name']
+
+	print(name)
+
+	price=[]
+	stubble=[]
+	cname = []
+	total=[]
+	quant=[]
+	counter = []
+
+	count = 1 
+
+	transaction_data = FBConn.get('/transaction_data/',None)
+	for i in transaction_data:
+		if name == transaction_data[i]['fname']:
+			cname.append(transaction_data[i]['Customer name'])
+			quant.append(transaction_data[i]['quant'])
+			total.append(int(transaction_data[i]['price'])*int(transaction_data[i]['quant']))
+			counter.append(count)
+			count = count + 1
+			print("hello")
+	
+	subtotal = 0
+
+	for j in total:
+		subtotal = subtotal + j
+
+
+	return render_template('farmer-dashboard.html', total_details=zip(cname,quant,total,counter), subtotal=subtotal, count = count)
 
 ##### new farmer upload details #####
 @app.route('/fupload',methods=['GET','POST'])
@@ -263,9 +305,6 @@ def upload():
 			print(result)
 			return redirect(url_for('ffeed'))
 	return render_template('farm-upload.html')        
-
-
-
 
 
 # @app.route('/card', methods=['GET','POST'])
@@ -305,11 +344,12 @@ def shop():
 				'price': price,
 				'fname' : farmer,
 				'quant' : quant 
-			}
+				}
 			print(data_to_upload)
 			result = FBConn.post('/transaction_data/', data_to_upload)
 			print(result)
-			return redirect(url_for('cart'))      
+			return redirect(url_for('cart'))
+    
 	
 	name_user=[]
 	price=[]
@@ -345,7 +385,7 @@ def cart():
 	for i in user_data:
 		if ph == user_data[i]['Phone Number']:	
 			name = user_data[i]['Name']
-			#emails = user_data[i]['Email id']
+	
 	for j in user_data:
 		#phones = user_data[j]['Phone Number']
 		types = user_data[j]['type']
@@ -356,8 +396,6 @@ def cart():
 	total=[]
 	quant=[]
 	
-       
-
 	print(name)
 
 	transaction_data = FBConn.get('/transaction_data/',None)
@@ -474,6 +512,60 @@ def cart1():
 	return render_template('cart1.html')
 	# return render_template('cart.html',total_details=zip(stubble,price))
 
+
+##### contact page #####
+@app.route('/contact',methods=['GET','POST'])
+def contact():
+	return render_template('contact.html')
+
+##### about page #####
+@app.route('/about',methods=['GET','POST'])
+def about():
+	return render_template('about.html')
+
+##### news page #####
+@app.route('/news',methods=['GET','POST'])
+def news():
+	return render_template('single-news.html')	
+
+##### post page ####
+@app.route('/post', methods=['GET','POST'])
+def post():
+	if request.method == 'POST':
+			print("hello-post-details")
+			name = request.form['name']
+			Stubble = request.form['Stubble']
+			quant = request.form['quant']
+			price = request.form['price']
+			month = request.form['month']
+			location = request.form['location']
+
+			url = 'https://www.fast2sms.com/dev/bulkV2'
+			messages = "Hello farmers Customer "+name+" wants "+Stubble+" stubble of "+quant+", Rs."+price+"/ton"+" in "+location
+			number = '7447680405'
+			playload = f'sender_id=SMSIND&message={messages}&route=p&language=english&numbers={number}'
+			params = {
+				'authorization': 'l4dWwPVt7M8mEXJQug2LDSzAx6RUbIHjpNZKsckfyFOvo5qahTMbXek3m2YNZzh4s6icKtPjvB5xn1QU',
+				'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			response = requests.request("POST", url=url, data=playload, headers=params)	
+			print(response.text)
+			return redirect(url_for('home_page'))
+			# print(messages)		
+	return render_template('post.html')
+
+######################TTRRRRYYYY############
+# url = 'https://www.fast2sms.com/dev/bulkV2'
+# message1 = 'HIIIII'
+# number = '7447680405'
+# playload = f'sender_id=SMSIND&message={message1}&route=p&language=english&numbers={number}'
+# params = {
+# 				'authorization': 'l4dWwPVt7M8mEXJQug2LDSzAx6RUbIHjpNZKsckfyFOvo5qahTMbXek3m2YNZzh4s6icKtPjvB5xn1QU',
+# 				'Content-Type' : 'application/x-www-form-urlencoded'
+# 				}
+# response = requests.request("POST", url=url, data=playload, headers=params )
+
+# print(response.text) 
 
 ####################
 

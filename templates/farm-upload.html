@@ -13,7 +13,7 @@
 	</head>
 
 	<body>
-
+		<section style="background-color: burlywood;">
 		<div class="wrapper">
 			<div class="inner">
 				<div class="image-holder">
@@ -29,7 +29,7 @@
 						<input type="text" name="name" placeholder="Name" class="form-control">
 					</div>
 					<div class="form-wrapper">
-						<input name="type" type="text" placeholder="type" class="form-control">
+						<input name="type" type="text" placeholder="Type" class="form-control">
 					</div>					
 					<!-- <div class="form-wrapper">
 						<select name="type" id="" class="form-control">
@@ -55,12 +55,16 @@
 						<input type="password" placeholder="Confirm Password" class="form-control">
 						<i class="zmdi zmdi-lock"></i>
 					</div> -->
-					<button name="submit" type="submit" name="submit" id="contact-submit" data-submit="...Sending">Upload
+					<button onclick="myFunction()" name="submit" type="submit" name="submit" id="contact-submit" data-submit="...Sending">Upload
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
 				</form>
 			</div>
 		</div>
-		
+	</section>
+	
+	<script>function myFunction() {
+		alert("Details uploaded succesfully!!");
+	}</script>
 	</body>
 </html>

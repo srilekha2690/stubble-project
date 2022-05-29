@@ -52,7 +52,7 @@
             <div class="container-fluid">
                 <!-- Card stats -->
                 <div class="row g-6 mb-6">
-                    <div class="col-xl-3 col-sm-6 col-12">
+                    <!-- <div class="col-xl-3 col-sm-6 col-12">
                         <div class="card shadow border-0">
                             <div class="card-body">
                                 <div class="row">
@@ -66,16 +66,34 @@
                                         </div>
                                     </div> 
                                 </div>
-                                <!-- <div class="mt-2 mb-0 text-sm">
-                                    <span class="badge badge-pill bg-soft-success text-success me-2">
-                                        <i class="bi bi-arrow-up me-1"></i>13%
+                   
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="col-xl-4 col-sm-6 col-12">
+                        <div class="card shadow border-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Orders Completed</span>
+                                        <span class="h3 font-bold mb-0">{{count-1}}</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
+                                            <i class="bi bi-clock-history"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                               <!--  <div class="mt-2 mb-0 text-sm">
+                                    <span class="badge badge-pill bg-soft-danger text-danger me-2">
+                                        <i class="bi bi-arrow-down me-1"></i>-5%
                                     </span>
                                     <span class="text-nowrap text-xs text-muted">Since last month</span>
                                 </div> -->
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
+                    </div>                    
+                    <div class="col-xl-4 col-sm-6 col-12">
                         <div class="card shadow border-0">
                             <div class="card-body">
                                 <div class="row">
@@ -98,40 +116,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card shadow border-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Order Process</span>
-                                        <span class="h3 font-bold mb-0">5</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
-                                            <i class="bi bi-clock-history"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                               <!--  <div class="mt-2 mb-0 text-sm">
-                                    <span class="badge badge-pill bg-soft-danger text-danger me-2">
-                                        <i class="bi bi-arrow-down me-1"></i>-5%
-                                    </span>
-                                    <span class="text-nowrap text-xs text-muted">Since last month</span>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="col-xl-4 col-sm-6 col-12">
                         <div class="card shadow border-0">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
                                         <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Income</span>
-                                        <span class="h3 font-bold mb-0">Rs. 95000</span>
+                                        <span class="h3 font-bold mb-0">Rs. {{subtotal}}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
-                                            <i class="bi bi-cash-stack"></i>
+                                            <i class="bi bi-Online-stack"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -155,237 +150,43 @@
                                 <tr>
                                     <th scope="col">Order ID</th>
                                     <th scope="col">Payment Method</th>
-                                    <th scope="col">Order Date</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Customer Name</th>
+                                    <th scope="col">Quantity</th>
                                     <th scope="col">Total</th>
-                                    <th scope="col">Action</th>
+                                    <!-- <th scope="col">Action</th> -->
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for item in total_details %}
                                 <tr>
                                     <td>
                                         <!-- <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> -->
                                         <a class="text-heading font-semibold" href="#">
-                                            01
+                                            {{item[3]}}
                                         </a>
                                     </td>
                                     <td>
-                                        Cash
+                                        Online
                                     </td>
                                     <td>
                                         <!-- <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2"> -->
                                         <a class="text-heading font-semibold" href="#">
-                                            Feb 15, 2022
+                                            {{item[0]}}
                                         </a>
                                     </td>
                                     <td>
-                                        Pending
+                                        {{item[1]}} ton
                                     </td>
                                     <td>
                                         <span class="badge badge-lg badge-dot">
-                                            <i class="bg-success"></i>Rs. 5000
+                                            <i class="bg-success"></i>{{item[2]}}
                                         </span>
                                     </td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
-                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <!-- <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> -->
-                                        <a class="text-heading font-semibold" href="#">
-                                            02
-                                        </a>
-                                    </td>
-                                    <td>
-                                        Cash
-                                    </td>
-                                    <td>
-                                        <!-- <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2"> -->
-                                        <a class="text-heading font-semibold" href="#">
-                                            Feb 20, 2022
-                                        </a>
-                                    </td>
-                                    <td>
-                                        Completed
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-lg badge-dot">
-                                            <i class="bg-success"></i>Rs. 5000
-                                        </span>
-                                    </td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
-                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <!-- <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> -->
-                                        <a class="text-heading font-semibold" href="#">
-                                            03
-                                        </a>
-                                    </td>
-                                    <td>
-                                        Cash
-                                    </td>
-                                    <td>
-                                        <!-- <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2"> -->
-                                        <a class="text-heading font-semibold" href="#">
-                                            Apr 1, 2022
-                                        </a>
-                                    </td>
-                                    <td>
-                                        Pending
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-lg badge-dot">
-                                            <i class="bg-success"></i>Rs. 5000
-                                        </span>
-                                    </td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
-                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                   <td>
-                                        <!-- <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> -->
-                                        <a class="text-heading font-semibold" href="#">
-                                            04
-                                        </a>
-                                    </td>
-                                    <td>
-                                        Cash
-                                    </td>
-                                    <td>
-                                        <!-- <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2"> -->
-                                        <a class="text-heading font-semibold" href="#">
-                                            Apr 12, 2022
-                                        </a>
-                                    </td>
-                                    <td>
-                                        Completed
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-lg badge-dot">
-                                            <i class="bg-success"></i>Rs. 5000
-                                        </span>
-                                    </td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
-                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <!-- <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> -->
-                                        <a class="text-heading font-semibold" href="#">
-                                            05
-                                        </a>
-                                    </td>
-                                    <td>
-                                        Cash
-                                    </td>
-                                    <td>
-                                        <!-- <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2"> -->
-                                        <a class="text-heading font-semibold" href="#">
-                                            Apr 15, 2022
-                                        </a>
-                                    </td>
-                                    <td>
-                                        Pending
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-lg badge-dot">
-                                            <i class="bg-success"></i>Rs. 5000
-                                        </span>
-                                    </td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
-                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <!-- <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> -->
-                                        <a class="text-heading font-semibold" href="#">
-                                            06
-                                        </a>
-                                    </td>
-                                    <td>
-                                        Cash
-                                    </td>
-                                    <td>
-                                        <!-- <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2"> -->
-                                        <a class="text-heading font-semibold" href="#">
-                                            Apr 18, 2022
-                                        </a>
-                                    </td>
-                                    <td>
-                                        Pending
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-lg badge-dot">
-                                            <i class="bg-success"></i>Rs. 5000
-                                        </span>
-                                    </td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
-                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <!-- <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> -->
-                                        <a class="text-heading font-semibold" href="#">
-                                            07
-                                        </a>
-                                    </td>
-                                    <td>
-                                        Cash
-                                    </td>
-                                    <td>
-                                        <!-- <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2"> -->
-                                        <a class="text-heading font-semibold" href="#">
-                                            Apr 20, 2022
-                                        </a>
-                                    </td>
-                                    <td>
-                                        Pending
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-lg badge-dot">
-                                            <i class="bg-success"></i>Rs. 5000
-                                        </span>
-                                    </td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
-                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                
+                                {% endfor %}                         
                             </tbody>
                         </table>
-                    </div>
-                    <div class="card-footer border-0 py-5">
-                        <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
                     </div>
                 </div>
             </div>

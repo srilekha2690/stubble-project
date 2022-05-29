@@ -7,7 +7,7 @@
 	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
 	<!-- title -->
-	<title>Cart</title>
+	<title>Shop</title>
 
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="static/img/favicon.png">
@@ -30,6 +30,7 @@
 	<link rel="stylesheet" href="static/css/main.css">
 	<!-- responsive -->
 	<link rel="stylesheet" href="static/css/responsive.css">
+	
 
 </head>
 <body>
@@ -59,7 +60,7 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="{{url_for('home_page')}}">Home</a>
+								<li class="current-list-item"><a href="#">Home</a>
 								</li>
 								<li><a href="{{url_for('about')}}">About</a></li>
 								<li><a href="{{url_for('news')}}">News</a></li>
@@ -81,6 +82,7 @@
 		</div>
 	</div>
 	<!-- end header -->
+
 
 
 	<!-- search area -->
@@ -108,8 +110,8 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Fresh and Organic</p>
-						<h1>Cart</h1>
+						<p>Can't find what you're looking for?</p>
+						<h1>Post your requirements</h1>
 					</div>
 				</div>
 			</div>
@@ -117,108 +119,63 @@
 	</div>
 	<!-- end breadcrumb section -->
 
-	<!-- cart -->
-	<div class="cart-section mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-md-12">
-					<div class="cart-table-wrap">
-						<table class="cart-table">
-							<thead class="cart-table-head">
-								<tr class="table-head-row">
-									<!-- <th class="product-remove"></th> -->
-									<th class="product-image">Farmer Name</th>
-									<th class="product-name">Stubble type</th>
-									<th class="product-price">Price</th>
-									<th class="product-quantity">Quantity</th>
-									<th class="product-total">Total</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for item in total_details %}
-								<tr class="table-body-row">
-									<td class="product-image">{{item[2]}}</td>
-									<td class="product-name">{{item[0]}}</td>
-									<td class="product-price">{{item[1]}}</td>
-									<td class="product-quantity">{{item[3]}}</td>
-									<td class="product-total">{{item[4]}}</td>
-								</tr>
-								{% endfor %}
-								<!-- <tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="static/img/products/product-img-2.jpg" alt=""></td>
-									<td class="product-name">Berry</td>
-									<td class="product-price">$70</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="static/img/products/product-img-3.jpg" alt=""></td>
-									<td class="product-name">Lemon</td>
-									<td class="product-price">$35</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr> -->
-							</tbody>
-						</table>
-					</div>
-				</div>
 
-				<div class="col-lg-4">
-					<div class="total-section">
-						<table class="total-table">
-							<thead class="total-table-head">
-								<tr class="table-total-row">
-									<th>Total</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="total-data">
-									<td><strong>Subtotal: </strong></td>
-									<td name="subtotal">Rs. {{subtotal}}</td>
-								</tr>
-								<tr class="total-data">
-									<td><strong>Shipping: </strong></td>
-									<td>Rs. 350</td>
-								</tr>
-								<tr class="total-data">
-									<td><strong>Total: </strong></td>
-									<td name="amount">{{amount/100}}</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="cart-buttons">
-							<a href="{{url_for('shop')}}" class="boxed-btn">Update Cart</a>
-							<!-- <a href="https://pages.razorpay.com/pl_ItxcERJRGlQQMk/view" class="boxed-btn black">Check Out</a> -->
-							<form action="/success" class="mt-5" method="POST" id="submit">
-								<script
-									id="submit"
-									src="https://checkout.razorpay.com/v1/checkout.js"
-									data-key="rzp_test_L5qGaTFk1cnq1b" 
-									data-amount="{{amount}}"
-									data-currency="INR"
-									data-order-id="dsjhdkjsdhkjd"
-									data-buttontext="Pay with razorpay"
-									data-name="Stubble Management"
-									data-description="Test transaction"
-									data-theme.color="#F37254"
-								></script>
-								<input type="hidden" custom="Hidden Element" name="hidden">
-								</form>
-						
-								</script>
-							</form>
-						</div>
+	<!-- logo carousel -->
+	<div class="logo-carousel-section">
+		<div class="container">
+			<form action="" method="POST">
+			<!-- <h4><center>Can't find what you're looking for?</center></h4>
+			<h2><center>Post your requirements</center></h2> -->
+			<br>			
+			<div>
+				<div class="col-2">
+					<div class="input-group" style="padding-left: 380px;">
+						<input size="40" class="input--style-2 " type="text" placeholder="Enter your name" name="name" id="name">
+					</div>
+				</div>		
+				<br>		
+				<div class="col-2">
+					<div class="input-group" style="padding-left: 380px;">
+						<input size="40" class="input--style-2 " type="text" placeholder="Type of stubble" name="Stubble" id="Stubble">
 					</div>
 				</div>
+				<br>
+				<div class="col-2">
+					<div class="input-group" style="padding-left: 380px;">
+						<input size="40" class="input--style-2 " type="text" placeholder="Quantity" name="quant" id="quant">
+					</div>
+				</div>
+				<br>
+				<div class="col-2">
+					<div class="input-group" style="padding-left: 380px;">
+						<input size="40" class="input--style-2 " type="text" placeholder="Expected Price" name="price" id="price">
+					</div>
+				</div>	
+				<br>	
+				<div class="col-2">
+					<div class="input-group" style="padding-left: 380px;">
+						<input size="40" class="input--style-2 " type="text" placeholder="Expected delivery month" name="month" id="month">
+					</div>
+				</div>	
+				<br>	
+				<div class="col-2">
+					<div class="input-group" style="padding-left: 380px;">
+						<input size="40" class="input--style-2 " type="text" placeholder="Delivery location" name="location" id="location">
+					</div>
+				</div>												 
 			</div>
+			<br>
+			<div class="p-t-30">
+				<center><button onclick="myFunction()" style="padding-top: 30px;line-height: 40px;display: inline-block;padding: 0 25px;cursor: pointer;color: #fff;border-radius: 3px;background: #57b846;-webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;font-size: 14px;font-weight: 700;" class="btn btn--radius btn--green" type="submit">Submit</button></center>
+			</div>	
+			</form>		
 		</div>
 	</div>
-	<!-- end cart -->
 
-
+    <script>function myFunction() {
+		alert("Requirements posted succesfully!!");
+	}</script>   
+	<!-- end logo carousel -->
 
 	<!-- footer -->
 	<div class="footer-area">
@@ -267,7 +224,6 @@
 	</div>
 	<!-- end footer -->
 	
-
 	
 	<!-- jquery -->
 	<script src="static/js/jquery-1.11.3.min.js"></script>

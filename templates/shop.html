@@ -30,6 +30,7 @@
 	<link rel="stylesheet" href="static/css/main.css">
 	<!-- responsive -->
 	<link rel="stylesheet" href="static/css/responsive.css">
+	
 
 </head>
 <body>
@@ -50,9 +51,9 @@
 					<div class="main-menu-wrap">
 						<!-- logo -->
 						<div class="site-logo">
-							<a href="index.html">
+<!-- 							<a href="index.html">
 								<img src="static/img/logo.png" alt="">
-							</a>
+							</a> --> 
 						</div>
 						<!-- logo -->
 
@@ -60,38 +61,10 @@
 						<nav class="main-menu">
 							<ul>
 								<li class="current-list-item"><a href="#">Home</a>
-									<ul class="sub-menu">
-										<li><a href="index.html">Static Home</a></li>
-										<li><a href="index_2.html">Slider Home</a></li>
-									</ul>
 								</li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="#">Pages</a>
-									<ul class="sub-menu">
-										<li><a href="404.html">404 page</a></li>
-										<li><a href="about.html">About</a></li>
-										<li><a href="cart.html">Cart</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="contact.html">Contact</a></li>
-										<li><a href="news.html">News</a></li>
-										<li><a href="shop.html">Shop</a></li>
-									</ul>
-								</li>
-								<li><a href="news.html">News</a>
-									<ul class="sub-menu">
-										<li><a href="news.html">News</a></li>
-										<li><a href="single-news.html">Single News</a></li>
-									</ul>
-								</li>
-								<li><a href="contact.html">Contact</a></li>
-								<li><a href="shop.html">Shop</a>
-									<ul class="sub-menu">
-										<li><a href="shop.html">Shop</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="single-product.html">Single Product</a></li>
-										<li><a href="cart.html">Cart</a></li>
-									</ul>
-								</li>
+								<li><a href="{{url_for('about')}}">About</a></li>
+								<li><a href="{{url_for('news')}}">News</a></li>
+								<li><a href="{{url_for('contact')}}">Contact</a></li>
 								<li>
 									<div class="header-icons">
 										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
@@ -109,6 +82,8 @@
 		</div>
 	</div>
 	<!-- end header -->
+
+
 
 	<!-- search area -->
 	<div class="search-area">
@@ -185,18 +160,8 @@
 						<!-- <input style="padding: 10px;margin-bottom: 20px;margin-left: 10px;margin-top: 10px;opacity: 0.5;" type="" name="Quantity" id="packingg" value="0"> -->
 						<!-- <a href="" class="cart-btn" name="submit" type="submit"><i class="fas fa-shopping-cart"></i> Add to Cart</a> -->
 						<input type="number" placeholder="0" name="quant">
-						<button class="button button1" id ="setMessageButton" style="background-color: #FF8C00; border: none; color: white;
-						border-radius: 5px;
-						padding: 11px 22px;
-						text-align: center;
-						text-decoration: none;
-						display: inline-block;
-						font-size: 14px;
-						margin: 4px 2px;
-						cursor: pointer;
-						-webkit-transition-duration: 0.4s;
-						transition-duration: 0.4s;">Add to cart</button>
-						<!-- <button class="button button1">Add to cart</button> -->
+						<!-- <button class="button button1"  name="submit" id ="submit" style="background-color: #FF8C00; border: none; color: white;border-radius: 5px;padding: 11px 22px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;margin: 4px 2px;cursor: pointer;-webkit-transition-duration: 0.4s;transition-duration: 0.4s;">Add to cart</button> -->
+						<button class="button button1" id="submit" name="submit">Add to cart</button>
 					</form>
 				</div>
 			</div>
@@ -271,31 +236,57 @@
 	<!-- end products -->
 
 	<!-- logo carousel -->
-	<!-- <div class="logo-carousel-section">
+	<div class="logo-carousel-section">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="logo-carousel-inner">
-						<div class="single-logo-item">
-							<img src="static/img/company-logos/1.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="static/img/company-logos/2.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="static/img/company-logos/3.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="static/img/company-logos/4.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="static/img/company-logos/5.png" alt="">
-						</div>
+			<h4><center>Can't find what you're looking for?</center></h4>
+			<h2><center>Post your requirements</center></h2>
+			<br>
+			<div class="p-t-30">
+				<center><button style="padding-top: 30px;line-height: 40px;display: inline-block;padding: 0 20px;cursor: pointer;color: #fff;border-radius: 3px;background: #57b846;-webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;font-size: 14px;font-weight: 700;" class="btn btn--radius btn--green" type="submit"><a href="{{url_for('post')}}">Click here</a></button></center>
+			</div>				
+			<!-- <div>
+				<div class="col-2">
+					<div class="input-group" style="padding-left: 380px;">
+						<input size="40" class="input--style-2 " type="text" placeholder="Enter your name" name="number" id="name">
+					</div>
+				</div>		
+				<br>		
+				<div class="col-2">
+					<div class="input-group" style="padding-left: 380px;">
+						<input size="40" class="input--style-2 " type="text" placeholder="Type of stubble" name="number" id="Stubble">
 					</div>
 				</div>
+				<br>
+				<div class="col-2">
+					<div class="input-group" style="padding-left: 380px;">
+						<input size="40" class="input--style-2 " type="text" placeholder="Quantity" name="number" id="Quant">
+					</div>
+				</div>
+				<br>
+				<div class="col-2">
+					<div class="input-group" style="padding-left: 380px;">
+						<input size="40" class="input--style-2 " type="text" placeholder="Expected Price" name="price">
+					</div>
+				</div>	
+				<br>	
+				<div class="col-2">
+					<div class="input-group" style="padding-left: 380px;">
+						<input size="40" class="input--style-2 " type="text" placeholder="Expected delivery month" name="month">
+					</div>
+				</div>	
+				<br>	
+				<div class="col-2">
+					<div class="input-group" style="padding-left: 380px;">
+						<input size="40" class="input--style-2 " type="text" placeholder="Delivery location" name="location">
+					</div>
+				</div>												 
 			</div>
+			<br>
+			<div class="p-t-30">
+				<center><button style="padding-top: 30px;line-height: 40px;display: inline-block;padding: 0 25px;cursor: pointer;color: #fff;border-radius: 3px;background: #57b846;-webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;font-size: 14px;font-weight: 700;" class="btn btn--radius btn--green" type="submit">Submit</button></center>
+			</div>	 -->	
 		</div>
-	</div> -->
+	</div>
 	<!-- end logo carousel -->
 
 	<!-- footer -->
@@ -345,28 +336,6 @@
 	</div>
 	<!-- end footer -->
 	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end copyright -->
 	
 	<!-- jquery -->
 	<script src="static/js/jquery-1.11.3.min.js"></script>
